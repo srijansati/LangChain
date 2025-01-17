@@ -13,8 +13,6 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-os.environ["USER_AGENT"] = os.getenv("USER_AGENT")
-
 groq_api_key = os.environ["GROQ_API_KEY"]
 
 if "vector" not in st.session_state:
