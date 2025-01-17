@@ -20,7 +20,7 @@ groq_api_key = os.environ["GROQ_API_KEY"]
 if "vector" not in st.session_state:
     st.session_state.embeddings = OllamaEmbeddings()
 
-    st.session_state.loader = WebBaseLoader(web_path= "https://lilianweng.github.io/posts/2023-06-23-agent/")
+    st.session_state.loader = WebBaseLoader(web_path= "https://docs.smith.langchain.com/")
     st.session_state.docs = st.session_state.loader.load()
 
     st.session_state.text_splitter = RecursiveCharacterTextSplitter(chunk_size = 1000, chunk_overlap = 200)
@@ -30,9 +30,9 @@ if "vector" not in st.session_state:
 
 st.title("ChatGroq")
 
-llm = ChatGroq(groq_api_key = groq_api_key, model= "mixtral-8x7b-32768")
+llm = ChatGroq(groq_api_key = groq_api_key, model_name= "mixtral-8x7b-32768")
 
-prompt = ChatPromptTemplate("""
+prompt = ChatPromptTemplate.from_template("""
 answer the question based on the provoded context only.
 please provide the best response possible based on the given question.
 <context>
@@ -60,7 +60,7 @@ if prompt:
         for i, doc in enumerate(response['context']):
             st.write(doc.page_content)
             st.write("____________________________________________")
-
+ 
 
 
 
