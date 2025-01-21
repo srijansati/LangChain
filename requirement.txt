@@ -16,7 +16,5 @@ wikipedia
 groq
 langchain-groq
 beautifulsoup4
-bitsandbytes
-accelerate
-transformers
-torch
+ragstack-ai
+datasets
